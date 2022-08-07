@@ -21,14 +21,9 @@ fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
         while temp_head.is_some() {
 
             let x = temp_head.as_mut().unwrap().clone();
-            if reversed.as_ref().is_none() {
-                reversed = Some(x);
-                reversed.as_mut().unwrap().next = None;
-            }else {
-                let temp = reversed.clone();
-                reversed = Some(x);
-                reversed.as_mut().unwrap().next = temp;
-            }
+            let temp = reversed.clone();
+            reversed = Some(x);
+            reversed.as_mut().unwrap().next = temp;
             temp_head = temp_head.unwrap().next.as_mut();
         }
     }
