@@ -7,10 +7,7 @@ pub struct ListNode {
 impl ListNode {
     #[inline]
     fn new(val: i32, next: Option<Box<ListNode>>) -> Self {
-        ListNode {
-            next: next,
-            val,
-        }
+        ListNode { next: next, val }
     }
 }
 fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
@@ -19,7 +16,6 @@ fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
     {
         let mut temp_head = head.as_mut();
         while temp_head.is_some() {
-
             let x = temp_head.as_mut().unwrap().clone();
             let temp = reversed.clone();
             reversed = Some(x);
@@ -32,14 +28,19 @@ fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
 fn main() {
     let head_1 = ListNode::new(1, None);
     let head_2 = ListNode::new(1, Some(Box::new(ListNode::new(2, None))));
-    let head_3 = ListNode::new(1,
-                               Some(Box::new(ListNode::new(2, Some(Box::new(ListNode::new(3,
-                                                                                          Some(Box::new(ListNode::new(4,
-                                                                                                                      Some(Box::new(ListNode::new(5,
-                                                                                                                                                  None))),
-                                                                                          ))),
-                               ))),
-                               ))));
+    let head_3 = ListNode::new(
+        1,
+        Some(Box::new(ListNode::new(
+            2,
+            Some(Box::new(ListNode::new(
+                3,
+                Some(Box::new(ListNode::new(
+                    4,
+                    Some(Box::new(ListNode::new(5, None))),
+                ))),
+            ))),
+        ))),
+    );
     println!("{:?}", reverse_list(Some(Box::new(head_1))));
     println!("{:?}", reverse_list(Some(Box::new(head_2))));
     println!("{:?}", reverse_list(Some(Box::new(head_3))));

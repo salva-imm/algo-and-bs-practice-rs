@@ -21,16 +21,19 @@ impl ToString for Clock {
 }
 
 fn calc_clock(hours: i32, minutes: i32) -> Clock {
-    let mut extra = minutes/60;
-    if minutes < 0 && minutes%60 != 0 {
+    let mut extra = minutes / 60;
+    if minutes < 0 && minutes % 60 != 0 {
         extra += -1;
     }
     Clock {
-        hours: ((hours.rem_euclid(24)) + extra).rem_euclid(24) ,
+        hours: ((hours.rem_euclid(24)) + extra).rem_euclid(24),
         minutes: minutes.rem_euclid(60),
     }
 }
 
 fn main() {
-    println!("Hello, world!, {}", Clock::new(5, 32).add_minutes(-1500).to_string());
+    println!(
+        "Hello, world!, {}",
+        Clock::new(5, 32).add_minutes(-1500).to_string()
+    );
 }
