@@ -1,0 +1,1 @@
+# Algorithm and dummy ideas practice in Rust
