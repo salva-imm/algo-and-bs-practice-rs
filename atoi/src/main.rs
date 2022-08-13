@@ -36,7 +36,6 @@ fn atoi_fn(s: String) -> i32 {
     }
 }
 
-
 fn main() {
     println!("{:?}", atoi_fn("  0000000000012345678".to_string()));
 }
